@@ -58,7 +58,7 @@ To run the project, follow these steps in order:
 ![Existing Heatmap](Exisiting_Charging_Stations.png)
 
 ### 7. Potential Heatmap
-![Potential Heatmap](Potential_Ev_Loaction.png)
+![Potential Heatmap](Potential_Ev_Location.png)
 
 ### 8. Optimal Heatmap
 ![Optimal Heatmap](optimal_Ev_stations_HeatMap.png)
