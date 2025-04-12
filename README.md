@@ -52,10 +52,10 @@ To run the project, follow these steps in order:
 ![Service Page](PGAdmin.png)
 
 ### 5. Nearest Stations
-![Nearest Stations](screenshots/nearest_stations.png)
+![Nearest Stations](Nearest_station.png)
 
 ### 6. Existing Heatmap
-![Existing Heatmap](screenshots/existing_heatmap.png)
+![Existing Heatmap](Exisiting_Charging_Stations.png)
 
 ### 7. Potential Heatmap
 ![Potential Heatmap](screenshots/potential_heatmap.png)
