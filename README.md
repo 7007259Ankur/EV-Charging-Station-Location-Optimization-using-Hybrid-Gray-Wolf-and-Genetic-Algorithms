@@ -40,7 +40,7 @@ To run the project, follow these steps in order:
 ## 📸 Screenshots
 
 ### 1. Register Page
-![Register Page](screenshots/register_page.png)
+![Register Page](register_page.png)
 
 ### 2. Login Page
 ![Login Page](screenshots/login_page.png)
