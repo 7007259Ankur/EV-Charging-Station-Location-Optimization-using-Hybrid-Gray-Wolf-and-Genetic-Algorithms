@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Charging Stations - Heatmap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+</head>
+<body>
+    <h2 style="text-align: center;">EV Charging Stations - Heatmap</h2>
+    <div id="map" style="height: 600px;"></div>
+
+    <script>
+        var map = L.map('map').setView([26.1445, 91.7362], 12); // Center on Guwahati
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        let heatStations = [];  // Store EV station coordinates
+
+        // Fetch EV Charging Stations
+        fetch("http://localhost:5000/api/existing_ev_stations")
+        .then(response => response.json())
+        .then(data => {
+            console.log("EV Stations:", data);
+
+            if (data.length === 0) {
+                console.warn("No EV stations found!");
+                return;
+            }
+
+            data.forEach(station => {
+                heatStations.push([station.latitude, station.longitude, 1.5]);  // Intensity 1.5
+
+                // Add markers for visibility
+                L.marker([station.latitude, station.longitude])
+                    .addTo(map)
+                    .bindPopup(`<b>${station.name}</b>`);
+            });
+
+            // Heatmap for EV Stations
+            L.heatLayer(heatStations, {
+                radius: 50,
+                blur: 20,
+                maxZoom: 15,
+                gradient: {
+                    0.2: 'purple',
+                    0.4: 'magenta',
+                    0.6: 'orange',
+                    0.8: 'red',
+                    1.0: 'darkred'
+                }
+            }).addTo(map);
+        })
+        .catch(error => console.error("Error fetching EV stations:", error));
+    </script>
+</body>
+</html>

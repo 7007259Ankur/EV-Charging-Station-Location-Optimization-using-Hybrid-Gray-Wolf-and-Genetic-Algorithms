@@ -1,0 +1,9 @@
+flask
+flask_cors
+numpy
+psycopg2
+pytest
+requests
+selenium
+webdriver_manager
+werkzeug

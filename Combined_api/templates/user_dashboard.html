@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Full-screen background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: url('image1.jpg') no-repeat center center/cover;
+            animation: slideshow 6s infinite;
+        }
+
+        /* Background Slideshow Animation */
+        @keyframes slideshow {
+            0% { background-image: url("{{ url_for('static', filename='images/image1.png') }}");
+        }
+            33% { background-image: url("{{ url_for('static', filename='images/image2.png') }}");
+        }
+            66% { background-image: url("{{ url_for('static', filename='images/image3.png') }}");
+        }
+            100% { background-image: url("{{ url_for('static', filename='images/image4.png') }}");
+        }
+        }
+
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            margin: 10px 0;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .station-info {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .station-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .station-info li {
+            background: #e9ecef;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>User Dashboard</h2>
+        <p>Welcome, <strong>{{ username }}</strong>!</p>
+        <button onclick="fetchLocation()">Find Nearest EV Stations</button>
+        <div id="map"></div>
+        <div id="station-list" class="station-info">
+            <h3>Nearest EV Stations:</h3>
+            <ul id="station-names"></ul>
+        </div>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+
+    <script>
+        var map;
+
+        function fetchLocation() {
+            navigator.permissions.query({name: 'geolocation'}).then(function(permissionStatus) {
+                if (permissionStatus.state === "denied") {
+                    alert("Location access is denied. Please enable it in your browser settings.");
+                } else {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(sendLocation, errorHandler, { enableHighAccuracy: true });
+                    } else {
+                        alert("Geolocation is not supported by this browser.");
+                    }
+                }
+            });
+        }
+
+        function sendLocation(position) {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+            let url = `http://127.0.0.1:5506/api/nearest_ev_stations?latitude=${lat}&longitude=${lon}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("map").style.display = "block";
+                    document.getElementById("station-list").style.display = "block";
+                    displayStations(data, lat, lon);
+                })
+                .catch(error => console.error("Error fetching stations:", error));
+        }
+
+        function displayStations(stations, userLat, userLon) {
+            if (!map) {
+                map = L.map('map').setView([userLat, userLon], 14);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap'
+                }).addTo(map);
+            } else {
+                map.eachLayer(layer => { if (!!layer.toGeoJSON) map.removeLayer(layer); });
+            }
+
+            // User marker (Blue)
+            L.marker([userLat, userLon], {
+                icon: L.icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+                    iconSize: [30, 40],
+                    iconAnchor: [15, 40],
+                    popupAnchor: [0, -35]
+                })
+            }).addTo(map).bindPopup("You are here!").openPopup();
+            
+            let stationList = document.getElementById("station-names");
+            stationList.innerHTML = "";
+            let heatLocations = [];
+
+            stations.forEach(station => {
+                // Custom EV station icon
+                let evIcon = L.icon({
+                    iconUrl: "{{ url_for('static', filename='images/eletric.png') }}",
+                    iconSize: [30, 30], // Adjust size
+                    iconAnchor: [15, 30], 
+                    popupAnchor: [0, -30] 
+                });
+
+                let marker = L.marker([station.latitude, station.longitude], { icon: evIcon }).addTo(map);
+                marker.bindPopup(`<b>${station.name}</b><br>Type: ${station.type}<br>Distance: ${station.distance_km.toFixed(2)} km`);
+
+                heatLocations.push([station.latitude, station.longitude, 1.5]);
+
+                let listItem = document.createElement("li");
+                listItem.textContent = `${station.name} - ${station.distance_km.toFixed(2)} km`;
+                stationList.appendChild(listItem);
+            });
+
+            if (heatLocations.length > 0) {
+                L.heatLayer(heatLocations, { radius: 40, blur: 25, maxZoom: 15 }).addTo(map);
+            }
+        }
+
+        function errorHandler(error) {
+            alert("Error fetching location. Please try again.");
+        }
+    </script>
+
+</body>
+</html>
