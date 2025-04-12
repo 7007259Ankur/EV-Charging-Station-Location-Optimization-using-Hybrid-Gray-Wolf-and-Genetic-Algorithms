@@ -1,4 +1,13 @@
-# Heatmap Station Locator Project
+# EV Charging Station Location Optimization using Hybrid Gray Wolf and Genetic Algorithms
+
+🧩 Project Features
+🧠 AI-Based Optimization: Uses Gray Wolf Optimizer and Genetic Algorithm.
+
+🗺️ Interactive Heatmaps: Visualize existing, potential, and optimal station locations.
+
+🧍 Role-Based Access: Separate interfaces for users and administrators.
+
+🔎 Nearest Station Locator: Find the closest charging station from your location.
 
 ## 🔧 Setup Instructions
 
