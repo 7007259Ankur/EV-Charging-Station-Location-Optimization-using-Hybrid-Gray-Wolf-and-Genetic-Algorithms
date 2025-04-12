@@ -46,7 +46,7 @@ To run the project, follow these steps in order:
 ![Login Page](Login_page.png)
 
 ### 3. Admin Page
-![Admin Page](screenshots/admin_page.png)
+![Admin Page](Admin_dashbord.png)
 
 ### 4. Service Page
 ![Service Page](screenshots/ser_page.png)
