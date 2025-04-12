@@ -40,7 +40,7 @@ To run the project, follow these steps in order:
 ## 📸 Screenshots
 
 ### 1. Register Page
-![Register Page](register_page.png)
+![Register Page](Register_page.png)
 
 ### 2. Login Page
 ![Login Page](Login_page.png)
@@ -49,7 +49,7 @@ To run the project, follow these steps in order:
 ![Admin Page](Admin_dashbord.png)
 
 ### 4. Service Page
-![Service Page](screenshots/ser_page.png)
+![Service Page](PGAdmin.png)
 
 ### 5. Nearest Stations
 ![Nearest Stations](screenshots/nearest_stations.png)
