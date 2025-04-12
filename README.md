@@ -43,7 +43,7 @@ To run the project, follow these steps in order:
 ![Register Page](register_page.png)
 
 ### 2. Login Page
-![Login Page](screenshots/login_page.png)
+![Login Page](Login_page.png)
 
 ### 3. Admin Page
 ![Admin Page](screenshots/admin_page.png)
