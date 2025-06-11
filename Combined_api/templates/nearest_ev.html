@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearest EV Stations</title>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        #map { height: 500px; width: 100%; }
+        .station-info { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Find Nearest EV Stations</h2>
+    <button onclick="fetchLocation()">Find My Location & Nearest EV Stations</button>
+    <div id="map"></div>
+    <div id="station-list" class="station-info">
+        <h3>Nearest EV Stations:</h3>
+        <ul id="station-names"></ul> <!-- ✅ List to display station names with distance -->
+    </div>
+
+    <script>
+        var map = L.map('map').setView([26.1445, 91.7362], 12); // Default center: Guwahati
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        function fetchLocation() {
+            navigator.permissions.query({name: 'geolocation'}).then(function(permissionStatus) {
+                if (permissionStatus.state === "denied") {
+                    alert("Location access is denied. Please enable it in your browser settings.");
+                } else {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(sendLocation, errorHandler, { enableHighAccuracy: true });
+                    } else {
+                        alert("Geolocation is not supported by this browser.");
+                    }
+                }
+            });
+        }
+
+        function sendLocation(position) {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+
+            console.log("User Location:", lat, lon);  
+
+            let url = `http://127.0.0.1:5506/api/nearest_ev_stations?latitude=${lat}&longitude=${lon}`;
+            console.log("Requesting:", url);  
+
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Nearest EV Stations Response:", data);  
+                displayStations(data, lat, lon);
+            })
+            .catch(error => console.error("Error fetching stations:", error));
+        }
+
+        function displayStations(stations, userLat, userLon) {
+            let stationList = document.getElementById("station-names");
+            stationList.innerHTML = ""; // ✅ Clear previous station names
+
+            map.setView([userLat, userLon], 14);
+
+            // ✅ Clear existing markers before adding new ones
+            map.eachLayer(function(layer) {
+                if (!!layer.toGeoJSON) { map.removeLayer(layer); } 
+            });
+
+            // ✅ User marker
+            let userMarker = L.marker([userLat, userLon]).addTo(map);
+            userMarker.bindPopup("You are here!").openPopup();
+
+            let heatLocations = [];  
+
+            if (stations.length === 0) {
+                alert("No nearby EV stations found.");
+                return;
+            }
+
+            stations.forEach(station => {
+                if (station.latitude && station.longitude) {
+                    console.log("Adding Marker:", station.name, station.latitude, station.longitude);
+
+                    let marker = L.marker([station.latitude, station.longitude]).addTo(map);
+                    marker.bindPopup(`<b>${station.name}</b><br>Type: ${station.type}<br><b>Distance: ${station.distance_km.toFixed(2)} km</b>`);
+
+                    heatLocations.push([station.latitude, station.longitude, 1.5]);  
+
+                    // ✅ Add station name + distance to the list
+                    let listItem = document.createElement("li");
+                    listItem.textContent = `${station.name} - ${station.distance_km.toFixed(2)} km`;
+                    stationList.appendChild(listItem);
+                }
+            });
+
+            // ✅ Add heatmap for nearest stations
+            if (heatLocations.length > 0) {
+                L.heatLayer(heatLocations, {
+                    radius: 40,
+                    blur: 25,
+                    maxZoom: 15,
+                    gradient: {
+                        0.2: 'blue',
+                        0.4: 'cyan',
+                        0.6: 'lime',
+                        0.8: 'yellow',
+                        1.0: 'red'
+                    }
+                }).addTo(map);
+            } else {
+                console.warn("No valid locations for heatmap.");
+            }
+        }
+
+        function errorHandler(error) {
+            console.error("Error fetching location:", error);
+            alert("Error fetching location. Please try again.");
+        }
+    </script>
+</body>
+</html>

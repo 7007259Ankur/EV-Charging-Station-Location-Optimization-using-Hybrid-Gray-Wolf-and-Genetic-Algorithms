@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS optimal_ev_stations;
+CREATE TABLE optimal_ev_stations (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    latitude DOUBLE PRECISION NOT NULL,
+    longitude DOUBLE PRECISION NOT NULL,
+    type TEXT NOT NULL
+);

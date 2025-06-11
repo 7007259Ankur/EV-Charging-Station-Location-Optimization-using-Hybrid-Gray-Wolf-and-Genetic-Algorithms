@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potential EV Locations - Heatmap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+</head>
+<body>
+    <h2 style="text-align: center;">Potential EV Locations - Heatmap</h2>
+    <div id="map" style="height: 600px;"></div>
+
+    <script>
+        var map = L.map('map').setView([26.1445, 91.7362], 12); // Center on Guwahati
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        let heatLocations = [];  // Store potential locations coordinates
+
+        // Fetch Potential EV Locations
+        fetch("http://localhost:5000/api/potential_locations")
+        .then(response => response.json())
+        .then(data => {
+            console.log("Potential Locations:", data);
+
+            if (!Array.isArray(data) || data.length === 0) {
+                console.error("No data received or incorrect format");
+                return;
+            }
+
+            data.forEach(location => {
+                if (!location.latitude || !location.longitude) {
+                    console.error("Missing coordinates for:", location);
+                    return;
+                }
+
+                heatLocations.push([location.latitude, location.longitude, 1.5]);  // Intensity 1.5
+
+                // Add markers for visibility
+                L.marker([location.latitude, location.longitude])
+                    .addTo(map)
+                    .bindPopup(`<b>${location.name}</b>`);
+            });
+
+            // Heatmap for Potential Locations
+            L.heatLayer(heatLocations, {
+                radius: 50,
+                blur: 20,
+                maxZoom: 15,
+                gradient: {
+                    0.2: 'blue',
+                    0.4: 'cyan',
+                    0.6: 'lime',
+                    0.8: 'yellow',
+                    1.0: 'green'
+                }
+            }).addTo(map);
+        })
+        .catch(error => console.error("Error fetching Potential Locations:", error));
+    </script>
+</body>
+</html>

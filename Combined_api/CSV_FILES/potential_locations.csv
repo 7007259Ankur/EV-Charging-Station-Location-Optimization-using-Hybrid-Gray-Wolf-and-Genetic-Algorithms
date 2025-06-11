@@ -1,0 +1,174 @@
+name,latitude,longitude,type
+CMJ University,26.0966427,91.87795349999999,universities
+Gauhati University,26.1540389,91.66296679999999,universities
+Radha Govinda Baruah College,26.1635701,91.7368437,universities
+Assam Institute of Technology,26.1331776,91.7858816,universities
+BMBB Commerce College,26.1710903,91.73286709999999,universities
+Karmashree Hiteswar Saikia College,26.1318509,91.81276460000001,universities
+B. Borooah College,26.1785533,91.75685530000001,universities
+Institute Of Hotel Management,26.1474392,91.815072,universities
+CMJ UNIVERSITY SHILLONG,26.1015502,91.864615,universities
+Pharma job,26.2499007,91.6914078,universities
+NORTH GUWAHATI COLLEGE,26.2029458,91.7144292,universities
+Gauhati Medical College,26.1542109,91.77007139999999,universities
+Appin International Guwahati,26.185261,91.75748709999999,universities
+PCPS Girls' Polytechnic,26.1820694,91.77954539999999,universities
+Swadeshi Academy,26.1612331,91.7749134,universities
+Sikkim Manipal University Distance Education (SMU-DE),26.1593315,91.69858149999999,universities
+College of Aeronautical Engineering (A Unit of GIET University),26.1024697,91.61192559999999,universities
+Sikkim Manipal University Directorate of Distance Education,26.1696722,91.7651212,universities
+Barbhag College,26.3645284,91.48297529999999,universities
+Sikkim Manipal University - Distance Education (SMU-DE),26.1860556,91.7427438,universities
+Mahalaxmi Assocaite,26.1580115,91.7405541,shopping_malls
+Exotica Greens,26.1653236,91.7790399,shopping_malls
+RCM PUC BIJOYNAGAR,26.1041241,91.5065807,shopping_malls
+Century Veneer,26.1266209,91.7194214,shopping_malls
+Banik Complex,26.1390296,91.74042279999999,shopping_malls
+Patanjali Arogya Kendra,26.141557,91.74161389999999,shopping_malls
+Brahmaputra Industrial & Suppliers,26.1779708,91.7406833,shopping_malls
+"A.K Studio & Sabina Electronics, Tapabori chwak ,Monday Bazar",26.2363053,91.43319369999999,shopping_malls
+V2 Retail Limited,26.1794331,91.7515303,shopping_malls
+Jain Shree,26.1765678,91.7533946,shopping_malls
+The Hub Mall,26.1669992,91.7668243,shopping_malls
+Dona Planet Multiplex and Mall,26.161138,91.77226859999999,shopping_malls
+TRENDS Footwear _ Central Mall Guwahati,26.15752,91.77816,shopping_malls
+Protech Centre,26.1492127,91.7864113,shopping_malls
+Bhogali Jalpan: ভোগালী জলপান,26.1588292,91.78783270000001,shopping_malls
+"Westside - Udeshna Mall, Guwahati",26.13947,91.7985909,shopping_malls
+Patanjali Arogya Kendra,26.344279,91.72766829999999,shopping_malls
+RCM,26.1231274,92.00234549999999,shopping_malls
+Sohum Emporia,26.16304879999999,91.7715547,shopping_malls
+JC store,26.0890848,91.5621669,shopping_malls
+Metro Baazar,26.1805177,91.74820249999999,supermarkets
+Organic Market Complex,26.1328818,91.8165717,supermarkets
+The Grocer Supermarket,26.1602517,91.68528429999999,supermarkets
+Guwahati Municipal Corporation Market Complex,26.1811003,91.73817199999999,supermarkets
+Vishal Mega Mart,26.1799619,91.7460485,supermarkets
+Reliance SMART Bazaar,26.1659301,91.76848009999999,supermarkets
+Vishal Mega Mart,26.1491273,91.7863331,supermarkets
+Protech Centre,26.1492127,91.7864113,supermarkets
+Super Home Shop,26.1420289,91.79994839999999,supermarkets
+Reliance SMART Superstore,26.118387,91.80624499999999,supermarkets
+Boro Chowk,26.2860002,91.83374979999999,supermarkets
+Rajib Das,26.1009693,91.54096609999999,supermarkets
+Reliance Smart Point,26.0978762,91.59212699999999,supermarkets
+A & N STORE,26.1181513,91.5496922,supermarkets
+PRAFULLA MART,26.0564619,91.5232743,supermarkets
+Patanjali Renu Arogya Kendra,26.1006987,91.5979388,supermarkets
+T & J MART,26.1012819,91.5992012,supermarkets
+MES Grocery & General Store,26.1062711,91.5998335,supermarkets
+929 Daily Bazar,26.0971538,91.6071723,supermarkets
+signature departmental store,26.1001512,91.61190619999999,supermarkets
+Guwahati,26.1157917,91.7085933,hotels
+Palasbari PHC,26.1229619,91.5490212,hotels
+Garal PHC,26.13898,91.60719879999999,hotels
+Lokpriya Gopinath Bordoloi International Airport,26.10647269999999,91.58604679999999,hotels
+Jayanta's Shop,26.0898158,91.53069610000001,hotels
+Union Bank of India,26.037672,91.511701,hotels
+BSNL Office Borjhar,26.1052778,91.5923416,hotels
+State Bank of India - Guwahati Airport Branch,26.10119599999999,91.5985224,hotels
+"Co-operative Apex bank, Bijoynagar",26.1031859,91.50868229999999,hotels
+South Indian Bank ATM,26.1056873,91.5889165,hotels
+"Dakshin Kamrup Girls College, Kochpara Mirza",26.0946054,91.52739509999999,hotels
+CENTRAL BANK OF INDIA - MIRZA Branch,26.09261829999999,91.5364926,hotels
+CENTRAL BANK OF INDIA - ATM,26.0926079,91.5364096,hotels
+State Bank Of India ATM,26.0927081,91.5365951,hotels
+College of Aeronautical Engineering (A Unit of GIET University),26.1024697,91.61192559999999,hotels
+Indian Institute of Information Technology Guwahati (IIITG),26.0812373,91.56199079999999,hotels
+"Deepsikha Hospice, Palliative Care Center.",26.0827799,91.553123,hotels
+Software Technology Park,26.1054075,91.5940885,hotels
+IndianOil,26.089733,91.558489,hotels
+Azara,26.1238778,91.61734969999999,hotels
+DEBAPI DAS GREEN HARVEAT LEMON GARDEN,26.2514048,91.60056829999999,parks
+State Botanical Garden,26.0990005,91.7918145,parks
+Assam State Zoo cum Botanical Garden,26.1636038,91.7813851,parks
+Kamala Bagan,26.0614882,91.89771309999999,parks
+Bamon Farms,25.7987599,91.9400544,parks
+Tapan nath home,26.083836,91.55888999999999,parks
+SS Agri farm house,26.0850442,91.5574553,parks
+IT Park,26.0865173,91.5662049,parks
+Pothar maj,26.0713458,91.5668811,parks
+Maliyata pahar,26.0776356,91.54452529999999,parks
+Mirza,26.08968699999999,91.543752,parks
+Maliata RF towers,26.0722885,91.5365442,parks
+Travel Asia,26.0876449,91.5352934,parks
+Tiku ff,26.0648394,91.5758367,parks
+Parking,26.0762179,91.5327453,parks
+Rani.. barki farmhouse,26.0633852,91.5776447,parks
+Kishen Farms,26.0483963,91.54799969999999,parks
+Sarpara East View,26.094797,91.52180659999999,parks
+Assam 2.0,26.1034048,91.5934668,parks
+Dhanamanikya Das,26.056262,91.523623,parks
+Bridgestone Select - Auto Wheelz,26.1281406,91.8117984,parking_spots
+The Spice Route,26.1423127,91.79499940000001,parking_spots
+IIITG Director's Parking,26.0813331,91.56212149999999,parking_spots
+Shaber Ali Enterprises,26.0880569,91.5630528,parking_spots
+Rahul Bike garage,26.0861991,91.576698,parking_spots
+Krishna's Garage for Ultra Bus,26.0924459,91.5418736,parking_spots
+Biswakarma Workshop,26.0928214,91.5399494,parking_spots
+BABA BISWAKARMA WELDING,26.0656153,91.5393843,parking_spots
+Uber zone,26.0917138,91.5857147,parking_spots
+Airport,26.0917138,91.5857147,parking_spots
+Kushal's Garage,26.0707769,91.5295273,parking_spots
+Parking Plot,26.0999368,91.5899774,parking_spots
+Commercial Vehicle Parking,26.111412,91.5375146,parking_spots
+My Home Parking Dot Com,26.0974653,91.59510279999999,parking_spots
+Panjabari,26.1050852,91.5896923,parking_spots
+Car Pick Up Point,26.105836,91.5893711,parking_spots
+Airport Parking Space,26.1060482,91.58943479999999,parking_spots
+Anil nath House,26.1005375,91.5940469,parking_spots
+Bikram baishya,26.1174258,91.572892,parking_spots
+Airport Junction Guwahati,26.099706,91.5984957,parking_spots
+IndianOil,26.019701,91.867617,petrol_pumps
+"Bharat Petroleum ola hypercharger, Petrol Pump -Nes Zoo Road",26.1590035,91.78170999999999,petrol_pumps
+Bharat petroleum,26.1288458,91.8062953,petrol_pumps
+IndianOil,26.173878,91.77251400000002,petrol_pumps
+IndianOil,26.089733,91.558489,petrol_pumps
+IndianOil,26.093012,91.53572799999999,petrol_pumps
+IndianOil,26.118662,91.54031499999999,petrol_pumps
+IndianOil,26.1031066,91.50960479999999,petrol_pumps
+"Hindustan Petroleum, Haligaon Bijoynagar",26.100749,91.503794,petrol_pumps
+Assam Oil,26.1024697,91.61192559999999,petrol_pumps
+"Sohani Meghalaya Service Station, Bharat Petroleum",26.02506999999999,91.5700883,petrol_pumps
+Pump,26.1368655,91.5808088,petrol_pumps
+IndianOil,26.138433,91.60965700000001,petrol_pumps
+BPCL Petrol Pump Super Service Station,26.1388875,91.6136406,petrol_pumps
+IndianOil,26.137563,91.63310200000001,petrol_pumps
+HP PETROL PUMP - HP BARTEZPUR,26.0722111,91.4388486,petrol_pumps
+IndianOil,26.1504974,91.6771943,petrol_pumps
+Assam Oil,26.12057059999999,91.6939472,petrol_pumps
+IndianOil,26.157867,91.6777255,petrol_pumps
+NES Adabari Petrol Pump - Bharat petroleum,26.1582164,91.6832246,petrol_pumps
+Guwahati Railway Station,26.1822633,91.75124129999999,railway_stations
+Bamuni Gaon,26.0149029,91.2957189,railway_stations
+Narangi,26.1821086,91.833325,railway_stations
+Panikhaiti,26.2115546,91.8752524,railway_stations
+Boko,25.9995987,91.2188674,railway_stations
+Thakurkuchi,26.2335237,91.9224766,railway_stations
+Digaru,26.1536805,91.978877,railway_stations
+Singra,25.9850517,91.1413551,railway_stations
+Panbari,26.199938,91.9775068,railway_stations
+Tetelia Junction,26.125661,92.02286149999999,railway_stations
+Mirza,26.0730204,91.51795829999999,railway_stations
+Azara,26.1019369,91.61675389999999,railway_stations
+Kamakhya Junction,26.1570247,91.6920834,railway_stations
+Chaygaon,26.0642,91.3955,railway_stations
+Agthori,26.1984821,91.68599909999999,railway_stations
+Changsari,26.262056,91.69391,railway_stations
+New Guwahati,26.1810379,91.7924439,railway_stations
+New Guwahati,26.18172,91.79235,railway_stations
+Noonmati,26.180633,91.80704399999999,railway_stations
+Baihata,26.3417772,91.68938999999999,railway_stations
+Lokpriya Gopinath Bordoloi International Airport,26.10647269999999,91.58604679999999,airports
+"ATS Complex, LGBI Airport Guwahati",26.1044095,91.5873702,airports
+Guwahati Airport,26.1051461,91.58894099999999,airports
+"NEW RHQ BUILDING, AAI",26.1042283,91.59092129999999,airports
+"New Integrated Terminal Building, Lokpriya Gopinath Bordoloi International Airport",26.1212379,91.59872159999999,airports
+Banajit Kalita HOME,26.1305216,91.59789219999999,airports
+Assam Travel Tourist car service Guwahati,26.1379844,91.6195499,airports
+Sualkuchi Helipad,26.160742,91.56487369999999,airports
+"Hellipad H2, veterinary Khanapara Playground",26.1190773,91.8174387,airports
+"Helipad H1, Veterinary Khanapar plaground",26.1203293,91.8178801,airports
+HELIPAD GATE,26.1206904,91.81842639999999,airports
+"helipad, oil india limited",26.1719346,91.837808,airports
+Army job,25.7468085,91.8891675,airports

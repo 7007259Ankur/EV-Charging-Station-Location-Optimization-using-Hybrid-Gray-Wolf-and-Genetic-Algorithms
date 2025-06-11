@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Background Slideshow */
+        .slideshow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .slideshow {
+            display: flex;
+            width: 200%; /* Extended for seamless loop */
+            height: 100%;
+            animation: slide 12s infinite linear;
+        }
+
+        .slide {
+            width: 25%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        /* Background Images */
+        .slide1 { background-image: url('{{ url_for('static', filename='images/image1.png') }}'); }
+        .slide2 { background-image: url('{{ url_for('static', filename='images/image2.png') }}'); }
+        .slide3 { background-image: url('{{ url_for('static', filename='images/image3.png') }}'); }
+        .slide4 { background-image: url('{{ url_for('static', filename='images/image4.png') }}'); }
+
+        /* Duplicate slides for smooth transition */
+        .slide5 { background-image: url('{{ url_for('static', filename='images/image1.png') }}'); }
+        .slide6 { background-image: url('{{ url_for('static', filename='images/image2.png') }}'); }
+        .slide7 { background-image: url('{{ url_for('static', filename='images/image3.png') }}'); }
+        .slide8 { background-image: url('{{ url_for('static', filename='images/image4.png') }}'); }
+
+        /* Keyframes for continuous sliding */
+        @keyframes slide {
+            0% { transform: translateX(0%); }
+            12.5% { transform: translateX(-12.5%); }
+            25% { transform: translateX(-25%); }
+            37.5% { transform: translateX(-37.5%); }
+            50% { transform: translateX(-50%); }
+            62.5% { transform: translateX(-62.5%); }
+            75% { transform: translateX(-75%); }
+            87.5% { transform: translateX(-87.5%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Main Content Box */
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn-danger { background: #dc3545; }
+        .btn-primary { background: #007bff; }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        <div class="slideshow">
+            <div class="slide slide1"></div>
+            <div class="slide slide2"></div>
+            <div class="slide slide3"></div>
+            <div class="slide slide4"></div>
+            <!-- Duplicated slides for seamless transition -->
+            <div class="slide slide5"></div>
+            <div class="slide slide6"></div>
+            <div class="slide slide7"></div>
+            <div class="slide slide8"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Welcome to EV Platform</h2>
+        {% if session.user %}
+            <p>Hello, {{ session.user }}!</p>
+            {% if session.is_admin %}
+                <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary">Admin Dashboard</a>
+            {% else %}
+                <a href="{{ url_for('user_dashboard') }}" class="btn btn-primary">User Dashboard</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-primary">Register</a>
+        {% endif %}
+    </div>
+
+</body>
+</html>
