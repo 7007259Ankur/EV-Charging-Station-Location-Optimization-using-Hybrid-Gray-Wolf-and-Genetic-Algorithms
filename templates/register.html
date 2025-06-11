@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Background Slideshow */
+        .slideshow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .slideshow {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            animation: slide 12s infinite linear;
+        }
+
+        .slide {
+            width: 25%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .slide1 { background-image: url('{{ url_for('static', filename='images/image1.png') }}'); }
+        .slide2 { background-image: url('{{ url_for('static', filename='images/image2.png') }}'); }
+        .slide3 { background-image: url('{{ url_for('static', filename='images/image3.png') }}'); }
+        .slide4 { background-image: url('{{ url_for('static', filename='images/image4.png') }}'); }
+
+        /* Duplicated slides for smooth transition */
+        .slide5 { background-image: url('{{ url_for('static', filename='images/image1.png') }}'); }
+        .slide6 { background-image: url('{{ url_for('static', filename='images/image2.png') }}'); }
+        .slide7 { background-image: url('{{ url_for('static', filename='images/image3.png') }}'); }
+        .slide8 { background-image: url('{{ url_for('static', filename='images/image4.png') }}'); }
+
+        /* Keyframes for continuous sliding */
+        @keyframes slide {
+            0% { transform: translateX(0%); }
+            12.5% { transform: translateX(-12.5%); }
+            25% { transform: translateX(-25%); }
+            37.5% { transform: translateX(-37.5%); }
+            50% { transform: translateX(-50%); }
+            62.5% { transform: translateX(-62.5%); }
+            75% { transform: translateX(-75%); }
+            87.5% { transform: translateX(-87.5%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Main Content Box */
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        <div class="slideshow">
+            <div class="slide slide1"></div>
+            <div class="slide slide2"></div>
+            <div class="slide slide3"></div>
+            <div class="slide slide4"></div>
+            <!-- Duplicated slides for seamless transition -->
+            <div class="slide slide5"></div>
+            <div class="slide slide6"></div>
+            <div class="slide slide7"></div>
+            <div class="slide slide8"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Register</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <label>
+                <input type="checkbox" name="is_admin"> Register as Admin
+            </label>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+    </div>
+
+</body>
+</html>

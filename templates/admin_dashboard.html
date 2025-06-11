@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background Slideshow */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slideshow img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.85); /* Transparent background for readability */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            width: 80%;
+            padding: 14px;
+            margin: 12px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.5s ease, background-color 0.3s;
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .btn:nth-child(1) { transition-delay: 0.1s; }
+        .btn:nth-child(2) { transition-delay: 0.2s; }
+        .btn:nth-child(3) { transition-delay: 0.3s; }
+        .btn:nth-child(4) { transition-delay: 0.4s; }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+        }
+
+        .logout-btn:hover {
+            background-color: #a71d2a;
+        }
+
+        /* Animation effect */
+        .btn.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Slideshow -->
+    <div class="slideshow">
+        <img src="{{ url_for('static', filename='images/admin1.jpg') }}" alt="Background 1">
+        <img src="{{ url_for('static', filename='images/admin4.jpg') }}" alt="Background 2">
+        <img src="{{ url_for('static', filename='images/admin3.jpg') }}" alt="Background 3">        
+    </div>
+
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <p>Welcome, {{ username }}! You have admin privileges.</p>
+
+        <div class="btn-container">
+            <button class="btn" onclick="window.location.href='/potential'">View Potential Locations</button>
+            <button class="btn" onclick="window.location.href='/existing'">View Existing Stations</button>
+            <button class="btn" onclick="window.location.href='/optimal'">View Optimal Locations</button>
+            <button class="btn logout-btn" onclick="window.location.href='/'">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        // Apply button animation on load
+        document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll(".btn");
+            buttons.forEach(btn => btn.classList.add("show"));
+        });
+
+        // Slideshow effect
+        let slides = document.querySelectorAll(".slideshow img");
+        let currentSlide = 0;
+
+        function changeSlide() {
+            slides[currentSlide].style.opacity = "0"; // Hide current slide
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.opacity = "1"; // Show next slide
+        }
+
+        slides[currentSlide].style.opacity = "1"; // Show first slide
+        setInterval(changeSlide, 5000); // Change image every 5 seconds
+    </script>
+
+</body>
+</html>
